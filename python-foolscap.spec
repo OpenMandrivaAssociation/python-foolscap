@@ -1,22 +1,22 @@
-%define module foolscap
-%define name python-%{module}
-%define version 0.3.2
-%define release %mkrel 2
+%define module	foolscap
+%define name	python-%{module}
+%define version	0.4.2
+%define release	%mkrel 1
 
-Summary: Rewrite of Perspective Broker
-Name: %{name}
-Version: %{version}
-Release: %{release}
-Source0: %{module}-%{version}.tar.lzma
-License: MIT
-Group: Development/Python
-Url: http://foolscap.lothar.com/
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
-Requires: python >= 2.4
-Requires: python-twisted >= 2.4.0
-Requires: python-OpenSSL >= 0.6
-BuildRequires: python-devel >= 2.4
-BuildArch: noarch
+Summary:	Rewrite of Perspective Broker
+Name:		%{name}
+Version:	%{version}
+Release:	%{release}
+Source0:	%{module}-%{version}.tar.gz
+License:	MIT
+Group:		Development/Python
+Url:		http://foolscap.lothar.com/
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
+Requires:	python >= 2.4
+Requires:	python-twisted >= 2.4.0
+Requires:	python-OpenSSL >= 0.6
+BuildRequires:	python-devel >= 2.4
+BuildArch:	noarch
 
 %description
 Foolscap is a ground-up rewrite of Perspective Broker, which itself is
