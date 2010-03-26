@@ -1,6 +1,6 @@
 %define module	foolscap
 %define name	python-%{module}
-%define version	0.5.0
+%define version	0.5.1
 %define release	%mkrel 1
 
 Summary:	Rewrite of Perspective Broker
@@ -33,7 +33,7 @@ HTTP/XMLRPC/CORBA/etc, you might consider using Foolscap.
 
 %install
 %__rm -rf %{buildroot}
-%__python setup.py install --root=%{buildroot} --record=FILELIST
+PYTHONDONTWRITEBYTECODE= %__python setup.py install --root=%{buildroot} --record=FILELIST
 
 %clean
 %__rm -rf %{buildroot}
