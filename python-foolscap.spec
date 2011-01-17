@@ -1,6 +1,6 @@
 %define module	foolscap
 %define name	python-%{module}
-%define version	0.6.0
+%define version	0.6.1
 %define release	%mkrel 1
 
 Summary:	Rewrite of Perspective Broker
