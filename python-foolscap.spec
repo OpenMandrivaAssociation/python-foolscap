@@ -1,13 +1,13 @@
 %define module	foolscap
 %define name	python-%{module}
-%define version	0.6.3
-%define release	%mkrel 1
+%define version	0.6.4
+%define release	1
 
 Summary:	Rewrite of Perspective Broker
 Name:		%{name}
 Version:	%{version}
 Release:	%{release}
-Source0:	%{module}-%{version}.tar.gz
+Source0:	http://pypi.python.org/packages/source/f/%{module}/%{module}-%{version}.tar.gz
 License:	MIT
 Group:		Development/Python
 Url:		http://foolscap.lothar.com/
@@ -33,11 +33,13 @@ HTTP/XMLRPC/CORBA/etc, you might consider using Foolscap.
 
 %install
 %__rm -rf %{buildroot}
-PYTHONDONTWRITEBYTECODE= %__python setup.py install --root=%{buildroot} --record=FILELIST
+PYTHONDONTWRITEBYTECODE= %__python setup.py install --root=%{buildroot}
 
 %clean
 %__rm -rf %{buildroot}
 
-%files -f FILELIST
+%files
 %defattr(-,root,root)
 %doc ChangeLog LICENSE NEWS README doc
+%_bindir/fl*
+%py_sitedir/%{module}*
