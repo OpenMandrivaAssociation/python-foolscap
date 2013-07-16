@@ -1,19 +1,15 @@
 %define module	foolscap
-%define name	python-%{module}
-%define version	0.6.1
-%define release	%mkrel 3
 
 Summary:	Rewrite of Perspective Broker
-Name:		%{name}
-Version:	%{version}
-Release:	%{release}
+Name:		python-%{module}
+Version:	0.6.3
+Release:	2
 Source0:	%{module}-%{version}.tar.gz
 License:	MIT
 Group:		Development/Python
 Url:		http://foolscap.lothar.com/
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Requires:	python >= 2.4
-Requires:	python-twisted >= 2.4.0
+Requires:	python-twisted >= 2.5.0
 Requires:	python-OpenSSL >= 0.6
 BuildRequires:	python-devel >= 2.4
 BuildArch:	noarch
@@ -32,19 +28,22 @@ HTTP/XMLRPC/CORBA/etc, you might consider using Foolscap.
 %__python setup.py build
 
 %install
-%__rm -rf %{buildroot}
 PYTHONDONTWRITEBYTECODE= %__python setup.py install --root=%{buildroot} --record=FILELIST
 
-%clean
-%__rm -rf %{buildroot}
-
 %files -f FILELIST
-%defattr(-,root,root)
 %doc ChangeLog LICENSE NEWS README doc
 
 
 %changelog
-* Thu May 05 2011 Oden Eriksson <oeriksson@mandriva.com> 0.6.1-2mdv2011.0
+* Tue Jan 10 2012 Lev Givon <lev@mandriva.org> 0.6.3-1mdv2012.0
++ Revision: 759473
+- Update to 0.6.3.
+
+* Wed Nov 16 2011 Lev Givon <lev@mandriva.org> 0.6.2-1
++ Revision: 731132
+- Update to 0.6.2.
+
+* Thu May 05 2011 Oden Eriksson <oeriksson@mandriva.com> 0.6.1-2
 + Revision: 667933
 - mass rebuild
 
