@@ -2,9 +2,9 @@
 
 Summary:	Rewrite of Perspective Broker
 Name:		python-%{module}
-Version:	0.6.3
-Release:	2
-Source0:	%{module}-%{version}.tar.gz
+Version:	0.6.4
+Release:	1
+Source0:	http://foolscap.lothar.com/releases/foolscap-%{version}.tar.gz
 License:	MIT
 Group:		Development/Python
 Url:		http://foolscap.lothar.com/
@@ -82,5 +82,6 @@ PYTHONDONTWRITEBYTECODE= %__python setup.py install --root=%{buildroot} --record
 * Mon Aug 18 2008 Lev Givon <lev@mandriva.org> 0.3.0-1mdv2009.0
 + Revision: 273137
 - import python-foolscap
+
 
 
