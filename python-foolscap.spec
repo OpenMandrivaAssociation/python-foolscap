@@ -3,7 +3,7 @@
 Summary:	Rewrite of Perspective Broker
 Name:		python-%{module}
 Version:	0.6.4
-Release:	3
+Release:	4
 License:	MIT
 Group:		Development/Python
 Url:		http://foolscap.lothar.com/
