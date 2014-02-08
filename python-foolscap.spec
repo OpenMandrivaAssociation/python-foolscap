@@ -3,7 +3,7 @@
 Summary:	Rewrite of Perspective Broker
 Name:		python-%{module}
 Version:	0.6.3
-Release:	2
+Release:	3
 Source0:	%{module}-%{version}.tar.gz
 License:	MIT
 Group:		Development/Python
