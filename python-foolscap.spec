@@ -9,7 +9,7 @@ Group:		Development/Python
 Url:		http://foolscap.lothar.com/
 Source0:	http://foolscap.lothar.com/releases/foolscap-%{version}.tar.gz
 BuildArch:	noarch
-BuildRequires:	pkgconfig(python)
+BuildRequires:	pkgconfig(python2)
 Requires:	python >= 2.4
 Requires:	python-twisted >= 2.5.0
 Requires:	python-OpenSSL >= 0.6
@@ -25,10 +25,10 @@ HTTP/XMLRPC/CORBA/etc, you might consider using Foolscap.
 %setup -qn %{module}-%{version}
 
 %build
-%__python setup.py build
+%{__python2} setup.py build
 
 %install
-PYTHONDONTWRITEBYTECODE= %__python setup.py install --root=%{buildroot} --record=FILELIST
+PYTHONDONTWRITEBYTECODE= %{__python2} setup.py install --root=%{buildroot} --record=FILELIST
 
 %files -f FILELIST
 %doc ChangeLog LICENSE NEWS README doc
