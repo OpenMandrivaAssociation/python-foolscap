@@ -2,14 +2,15 @@
 
 Summary:	Rewrite of Perspective Broker
 Name:		python-%{module}
-Version:	0.6.4
-Release:	11
+Version:	0.13.1
+Release:	1
 License:	MIT
 Group:		Development/Python
 Url:		http://foolscap.lothar.com/
-Source0:	http://foolscap.lothar.com/releases/foolscap-%{version}.tar.gz
+Source0:	https://files.pythonhosted.org/packages/b5/af/955c37e197df562b92a049d11a0f5cbae8ab8996007b3a65a88a920b75b0/foolscap-0.13.1.tar.gz
 BuildArch:	noarch
-BuildRequires:	pkgconfig(python2)
+BuildRequires:	pkgconfig(python)
+BuildRequires:	python-setuptools
 Requires:	python >= 2.4
 Requires:	python-twisted >= 2.5.0
 Requires:	python-OpenSSL >= 0.6
@@ -25,11 +26,13 @@ HTTP/XMLRPC/CORBA/etc, you might consider using Foolscap.
 %setup -qn %{module}-%{version}
 
 %build
-%{__python2} setup.py build
+find . -name "*.py" -exec 2to3 -w {} \;
+%py_build
 
 %install
-PYTHONDONTWRITEBYTECODE= %{__python2} setup.py install --root=%{buildroot} --record=FILELIST
+%py_install
 
-%files -f FILELIST
-%doc ChangeLog LICENSE NEWS README doc
-
+%files
+%doc LICENSE NEWS README doc
+%{_bindir}/*
+%{python_sitelib}/%{module}*
