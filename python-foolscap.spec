@@ -2,12 +2,12 @@
 
 Summary:	Rewrite of Perspective Broker
 Name:		python-%{module}
-Version:	0.13.2
+Version:	20.4.0
 Release:	1
 License:	MIT
 Group:		Development/Python
 Url:		http://foolscap.lothar.com/
-Source0:	https://files.pythonhosted.org/packages/1c/a6/a39f55c2296c28e5b89f70680830d8d2a45a7208089a1a882bd14033089c/foolscap-0.13.2.tar.gz
+Source0:	https://files.pythonhosted.org/packages/65/de/fac1106cec1b49ff29f6aabb588b65377b81909b43794123f2ff2eea18f9/foolscap-20.4.0.tar.gz
 BuildArch:	noarch
 BuildRequires:	pkgconfig(python)
 BuildRequires:	python-setuptools
