@@ -1,38 +1,47 @@
 %define module	foolscap
 
-Summary:	Rewrite of Perspective Broker
-Name:		python-%{module}
-Version:	21.7.0
-Release:	4
+Name:		python-foolscap
+Summary:	Remote object-messaging for Python+Twisted
+Version:	24.9.0
+Release:	1
 License:	MIT
 Group:		Development/Python
-Url:		https://foolscap.lothar.com/
-Source0:	https://files.pythonhosted.org/packages/f8/28/afd77fb196c855aeea79035bcd6f76cc94a61c19381b32df951c00937171/foolscap-21.7.0.tar.gz
+URL:		https://github.com/warner/foolscap
+Source0:	%{URL}/archive/%{module}-%{version}/%{name}-%{version}.tar.gz
+
+BuildSystem:	python
 BuildArch:	noarch
 BuildRequires:	pkgconfig(python)
-BuildRequires:	python-setuptools
-Requires:	python >= 2.4
-Requires:	python-twisted >= 2.5.0
-Requires:	python-OpenSSL >= 0.6
+BuildRequires:	python%{pyver}dist(setuptools)
+BuildRequires:	python%{pyver}dist(versioneer)
 
 %description
-Foolscap is a ground-up rewrite of Perspective Broker, which itself is
-Twisted's native RPC/RMI protocol (Remote Procedure Call / Remote
-Method Invocation).  If you have control of both ends of the wire, and
-are thus not constrained to use some other protocol like
-HTTP/XMLRPC/CORBA/etc, you might consider using Foolscap.
+is an RPC/RMI (Remote Procedure Call / Remote Method Invocation) protocol
+for use with Twisted, derived/inspired by Twisted's built-in
+"Perspective Broker" package.
 
-%prep
-%setup -qn %{module}-%{version}
+If you have control of both ends of the wire, and are thus not constrained
+to use some other protocol like HTTP/XMLRPC/CORBA/etc, you might consider
+using Foolscap.
 
-%build
-find . -name "*.py" -exec 2to3 -w {} \;
-%py_build
+Fundamentally, Foolscap allows you to make a python object in one process
+available to code in other processes, which means you can invoke its methods
+remotely.
 
-%install
-%py_install
+This includes a data serialization layer to convey the object graphs
+for the arguments and the eventual response, and an object reference system to
+keep track of which objects you are connecting to.
+
+It uses a capability-based security model, such that once you create a
+non-public object, it is only accessible to clients to whom you've given
+the (unguessable) FURL.
+
+You can of course publish world-visible objects that have well-known FURLs.
+
 
 %files
-%doc LICENSE doc
-%{_bindir}/*
-%{python_sitelib}/%{module}*
+%doc doc README.md
+%license LICENSE
+%{_bindir}/{flogtool,flappserver,flappclient}
+%{python_sitelib}/%{module}
+%{python_sitelib}/%{module}-%{version}-py%{pyver}.egg-info
